@@ -76,12 +76,11 @@ function removeBook(event){
     });
 
     myLibrary.splice(index, 1);
-
+    tbody.replaceChildren() // removes all children
     displayBooks()
 }
 
 function displayBooks(){
-    tbody.replaceChildren() // removes all children
     let rows = createBookRows()
     rows.forEach(row => {
         tbody.appendChild(row)
