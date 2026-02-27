@@ -56,6 +56,9 @@ function createBookRows(){
         let delBtn = document.createElement("button");
         delBtn.textContent = "Remove Book";
         delBtn.classList.add("delBtn");
+        delBtn.setAttribute("id", book.id);
+
+        delBtn.addEventListener("click", removeBook)
 
         btnDataCell.appendChild(delBtn);
 
@@ -67,7 +70,18 @@ function createBookRows(){
    return bookRows;
 }
 
+function removeBook(event){
+    let index = myLibrary.findIndex(book => {
+        return book.id === event.target.id;
+    });
+
+    myLibrary.splice(index, 1);
+
+    displayBooks()
+}
+
 function displayBooks(){
+    tbody.replaceChildren() // removes all children
     let rows = createBookRows()
     rows.forEach(row => {
         tbody.appendChild(row)
