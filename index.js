@@ -1,5 +1,5 @@
 const tbody = document.querySelector("tbody");
-
+const body = document.querySelector("body")
 const myLibrary = [];
 
 function Book(id, title, author, pages, readStatus){
@@ -81,6 +81,12 @@ function removeBook(event){
 }
 
 function displayBooks(){
+    if(myLibrary.length == 0){
+        let para = document.createElement("p");
+        para.textContent = "No books in your library. Click 'Add Books' button above to add.";
+        body.appendChild(para);
+    }
+
     let rows = createBookRows()
     rows.forEach(row => {
         tbody.appendChild(row)
