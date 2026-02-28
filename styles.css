@@ -1,0 +1,195 @@
+html{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    font-size: 18px;
+}
+
+h1{
+    text-align: center;
+    color: green;
+    text-decoration:underline;
+    font-size: 36px;
+}
+table, td, th{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+td, th{
+    padding:5px 20px;
+    min-width: 6ch;
+    max-width: 28ch;
+    text-align: center;
+}
+
+caption{
+    font-style:italic;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.status-read{
+    color: green;
+}
+
+.status-not-read{
+    color: crimson;
+}
+
+.delBtn{
+    padding: 5px 15px;
+    color: #fa5e55;
+    background-color: white;
+    border: 2px solid #fa5e55;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.25s, color 0.25s;
+    font-size: 18px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.delBtn:hover{
+    color: white;
+    background-color: #fa5e55;
+}
+
+p{
+    margin: 10px;
+    color: crimson;
+    font-style: italic;
+}
+
+.addBtn{
+    background-color:white;
+    color: green;
+    padding: 5px 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    border: 2px solid green;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.25s, background-color 0.25s;
+}
+
+.addBtn:hover{
+    color: white;
+    background-color: green;
+
+}
+dialog{
+    width: 30vw;
+    min-width: 300px;
+    max-width: 700px;
+     border: 2px solid black;
+     border-radius: 10px;
+     padding: 20px 30px;
+}
+
+form{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+dialog h3{
+   text-align: center;
+   text-decoration: underline;
+   font-size: 24px;
+}
+form input{
+    padding: 5px;
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 5px;
+    border: 1px solid black;    
+}
+
+form input:focus{
+    outline: none;
+    border: 2px solid green;
+    box-shadow: 0 0 3px lawngreen;
+}
+
+
+fieldset{
+    grid-column: 1 / -1;
+}
+
+fieldset input,
+fieldset label{
+    cursor: pointer;
+}
+
+form > div{
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+form button.addBtn{
+    padding: 5px 15px;
+    font-size: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+form .closeBtn{
+    padding: 5px 15px;
+    font-size: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #fa5e55;
+    background-color: white;
+    border: 2px solid #fa5e55;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.25s, background-color 0.25s;
+}
+
+form .closeBtn:hover{
+    background-color: #fa5e55;
+    color: white;
+}
+
+td#status span{
+    margin-right: 10px;
+
+}
+
+td#status button{
+    padding: 5px 15px;
+    width: 170px;
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid green;
+    background-color: white;
+    color: rgb(0, 168, 0);
+    cursor: pointer;
+}
+.un-read{
+    color: green;
+    padding: 5px 15px;
+    font-weight: 600;
+}
+.read{
+    color: rgb(163, 163, 163);
+    font-weight:600;
+}
+
+thead tr, 
+tfoot tr{
+    background-color: green;
+    color: white;
+}
+
+tbody tr:nth-child(even){
+    background-color: rgb(240, 247, 242);
+}
