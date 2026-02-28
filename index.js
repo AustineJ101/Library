@@ -1,5 +1,12 @@
 const tbody = document.querySelector("tbody");
-const body = document.querySelector("body")
+const body = document.querySelector("body");
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const affirmativeRadio = document.querySelector("#affirmative");
+const submitBtn = document.querySelector(".submitBtn");
+const dialog = document.querySelector("dialog");
+
 const myLibrary = [];
 
 function Book(id, title, author, pages, readStatus){
@@ -10,17 +17,17 @@ function Book(id, title, author, pages, readStatus){
     this.readStatus = readStatus;
 }
 
-function addBookToLibrary(title, author,pages, readStatus){
+function addBookToLibrary({title, author,pages, readStatus}){
     let id = crypto.randomUUID();
     let newBook = new Book(id, title, author, pages, readStatus);
     myLibrary.push(newBook);
 }
 
-addBookToLibrary("The 10X Rule", "Grant Cardone", 240, true);
+// addBookToLibrary("The 10X Rule", "Grant Cardone", 240, true);
 
-addBookToLibrary("The 4 - Hour Work Week", "Timothy Ferris", 280, false);
+// addBookToLibrary("The 4 - Hour Work Week", "Timothy Ferris", 280, false);
 
-addBookToLibrary("The Art of Spending Money", "Morgan Housel", 175, true);
+// addBookToLibrary("The Art of Spending Money", "Morgan Housel", 175, true);
 
 function createBookRows(){
     const bookRows = [];
@@ -76,21 +83,59 @@ function removeBook(event){
     });
 
     myLibrary.splice(index, 1);
-    tbody.replaceChildren() // removes all children
+
     displayBooks()
 }
 
+let userPrompt = document.createElement("p");
+userPrompt.textContent = "No books in your library. Click the 'Add New Book' button above to add."; 
+
 function displayBooks(){
-    if(myLibrary.length == 0){
-        let para = document.createElement("p");
-        para.textContent = "No books in your library. Click 'Add Books' button above to add.";
-        body.appendChild(para);
+    tbody.replaceChildren() // removes all children to allow re-rendering of book rows
+    
+    if(myLibrary.length == 0){ 
+        body.appendChild(userPrompt);
+        return;
     }
+     
+    userPrompt.remove();
 
     let rows = createBookRows()
     rows.forEach(row => {
         tbody.appendChild(row)
     })
 }
-
+let bookSample = {title: "The Great River", author: "Austine Juma", pages: 345, readStatus: true} // Sample book to be displayed on page load
+addBookToLibrary(bookSample)
 displayBooks();
+
+function isBookRead(affirmative){
+    return affirmative.checked? true : false;
+}
+
+submitBtn.addEventListener("click", (e) => {
+    e.preventDefault()
+    const book = {};
+   
+    if(title.value){
+        book.title = title.value;
+        if(author.value){
+             book.author = author.value;
+             if(pages.value){
+                book.pages = pages.value;
+                isBookRead(affirmativeRadio)? book.readStatus = true : book.readStatus = false;
+                addBookToLibrary(book);
+                displayBooks()
+                dialog.close()
+                
+             }else{
+                pages.focus();
+             }
+        }else{
+            author.focus();
+        }
+    }else{
+        title.focus();
+    }
+    
+})
