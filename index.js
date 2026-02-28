@@ -16,6 +16,11 @@ function Book(id, title, author, pages, readStatus){
     this.author = author;
     this.pages = pages;
     this.readStatus = readStatus;
+
+    this.toggleReadStatus = function(){
+        let newStatus = !(this.readStatus);
+        this.readStatus = newStatus;
+    }
 }
 
 function addBookToLibrary({title, author,pages, readStatus}){
@@ -37,15 +42,31 @@ function createBookRows(){
         for(let entry in book){
             if(entry == "readStatus"){
                 let dataCell = document.createElement("td");
+                let statusSpan = document.createElement("span");
+                let toggleReadStatusBtn = document.createElement("button");
                 if(book[entry] == true){
-                    dataCell.textContent = "Read";
-                    dataCell.classList.add("status-read")
+                    toggleReadStatusBtn.textContent = "Mark as not read";
+                    statusSpan.textContent = "Read";
+                    statusSpan.classList.add("un-read")
+
                 }else{
-                    dataCell.textContent = "Not Read";
-                    dataCell.classList.add("status-not-read");
+                    toggleReadStatusBtn.textContent = "Mark as read"
+                    statusSpan.textContent = "Not Read"
+                    statusSpan.classList.add("read")
                 }
+
+                toggleReadStatusBtn.addEventListener("click", () => {
+                    book.toggleReadStatus();
+                    displayBooks();
+                })
+
+                dataCell.appendChild(statusSpan)
+                dataCell.appendChild(toggleReadStatusBtn);
+
+                dataCell.setAttribute('id', "status")
+
                 row.appendChild(dataCell);
-            }else if(entry != "id"){ // Exclude id value from data cells
+            }else if(entry != "id" && entry != "toggleReadStatus"){ // Exclude id value and the toggleReadStatus function from data cells
                 let dataCell = document.createElement("td");
                 dataCell.textContent = book[entry];
                 dataCell.classList.add(entry);
@@ -100,8 +121,10 @@ function displayBooks(){
         tbody.appendChild(row)
     })
 }
-let bookSample = {title: "The Great River", author: "Austine Juma", pages: 345, readStatus: true} // Sample book to be displayed on page load
+let bookSample = {title: "When the Sun goes Down", author: "Emilia Ilieva", pages: 345, readStatus: true} // Sample book to be displayed on page load
 addBookToLibrary(bookSample)
+let bookSample2 = {title: "Psychology of Money", author: "Morgan Housel", pages: 175,  readStatus: false}
+addBookToLibrary(bookSample2)
 displayBooks();
 
 function isBookRead(affirmative){
