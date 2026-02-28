@@ -4,6 +4,7 @@ const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const affirmativeRadio = document.querySelector("#affirmative");
+const negativeRadio = document.querySelector("#negative");
 const submitBtn = document.querySelector(".submitBtn");
 const dialog = document.querySelector("dialog");
 
@@ -22,12 +23,6 @@ function addBookToLibrary({title, author,pages, readStatus}){
     let newBook = new Book(id, title, author, pages, readStatus);
     myLibrary.push(newBook);
 }
-
-// addBookToLibrary("The 10X Rule", "Grant Cardone", 240, true);
-
-// addBookToLibrary("The 4 - Hour Work Week", "Timothy Ferris", 280, false);
-
-// addBookToLibrary("The Art of Spending Money", "Morgan Housel", 175, true);
 
 function createBookRows(){
     const bookRows = [];
@@ -126,6 +121,7 @@ submitBtn.addEventListener("click", (e) => {
                 isBookRead(affirmativeRadio)? book.readStatus = true : book.readStatus = false;
                 addBookToLibrary(book);
                 displayBooks()
+                resetInputFields()
                 dialog.close()
                 
              }else{
@@ -139,3 +135,10 @@ submitBtn.addEventListener("click", (e) => {
     }
     
 })
+
+function resetInputFields(){
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    negativeRadio.checked = true;
+}
