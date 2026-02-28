@@ -45,7 +45,7 @@ function createBookRows(){
                 let statusSpan = document.createElement("span");
                 let toggleReadStatusBtn = document.createElement("button");
                 if(book[entry] == true){
-                    toggleReadStatusBtn.textContent = "Mark as not read";
+                    toggleReadStatusBtn.textContent = "Mark as unread";
                     statusSpan.textContent = "Read";
                     statusSpan.classList.add("un-read")
 
@@ -121,10 +121,12 @@ function displayBooks(){
         tbody.appendChild(row)
     })
 }
-let bookSample = {title: "When the Sun goes Down", author: "Emilia Ilieva", pages: 345, readStatus: true} // Sample book to be displayed on page load
+let bookSample = {title: "When the Sun Goes Down", author: "Emilia Ilieva", pages: 345, readStatus: true} // Sample book to be displayed on page load
 addBookToLibrary(bookSample)
 let bookSample2 = {title: "Psychology of Money", author: "Morgan Housel", pages: 175,  readStatus: false}
 addBookToLibrary(bookSample2)
+let bookSample3 = {title: "The 10X Rule", author: "Grant Cardone", pages: 240, readStatus: true};
+addBookToLibrary(bookSample3)
 displayBooks();
 
 function isBookRead(affirmative){
