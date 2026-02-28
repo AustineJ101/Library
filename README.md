@@ -3,7 +3,7 @@ A dynamic Library application built using HTML, CSS, and JavaScript.
 
 This project was completed as part of The Odin Project – JavaScript Path, focusing on object constructors, DOM manipulation, and state-driven rendering.
 
-[Live Preview]()
+[Live Preview](https://austinej101.github.io/Library/)
 
 # Features
 This application allows users to:
