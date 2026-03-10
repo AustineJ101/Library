@@ -34,5 +34,3 @@ The application uses an in-memory array called myLibrary as the single source of
 - State-based UI updates
 
 - Form validation and reset logic
-
-- Usage of the <dialog> element
