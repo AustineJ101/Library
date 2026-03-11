@@ -10,14 +10,16 @@ const dialog = document.querySelector("dialog");
 
 const myLibrary = [];
 
-function Book(id, title, author, pages, readStatus){
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
+class Book{
+    constructor(id, title, author, pages, readStatus){
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
 
-    this.toggleReadStatus = function(){
+    toggleReadStatus(){
         let newStatus = !(this.readStatus);
         this.readStatus = newStatus;
     }
