@@ -21,7 +21,7 @@ This application allows users to:
 The application uses an in-memory array called myLibrary as the single source of all the data and re-renders the DOM whenever the state changes.
 
 # Concepts Practiced
-- Constructor functions
+- JavaScript classes to create objects
 
 - Object-oriented patterns in JavaScript
 
